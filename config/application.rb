@@ -18,5 +18,9 @@ module Letsquestion
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # i18nでja.ymlを使用し、記述がない場合はen.ymlを使う
+    config.i18n.default_locale = :ja
+    config.i18n.fallbacks =[:en, :ja]
   end
 end

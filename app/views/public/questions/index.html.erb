@@ -1,0 +1,21 @@
+<div class="conteiner">
+  <div class= "row">
+    <div class = "col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h1>新着質問一覧</h1>
+      <table class="table table-hover teble-inverse mt-3">
+      <% @questions.each do |question| %>
+        <tr>
+          <td>タイトル</td>
+          <td><%= question.title %></td>
+        </tr>
+        <tr>
+          <td>質問内容</td>
+          <td><%= question.content %></td>
+        </tr>
+        <td><%= link_to '質問詳細ページ', "/public/questions/#{question.id}" , class: 'btn btn-primary'%></td>
+      
+      <% end %>
+      </table>
+    </div>
+  </div>
+</div>

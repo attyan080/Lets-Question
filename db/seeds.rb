@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+genres = ['旅行', 'プログラミング','遊び','生活','政治・経済','仕事','学校','','','']
+genres.each do |genre|
+  Genre.find_or_create_by(name: genre)
+end

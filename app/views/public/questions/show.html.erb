@@ -1,0 +1,63 @@
+<div class="container">
+  <!--<div class= "row">-->
+  <!--  <div class = "col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">-->
+      <h2 class="underline-blue">質問詳細</h2>
+
+      <!--<table class="table table-hover teble-inverse mt-3">-->
+      <!--  <tr>-->
+      <!--    <td>質問タイトル</td>-->
+      <!--    <td><%= @question.title %></td>-->
+      <!--  </tr>-->
+      <!--  <tr>-->
+      <!--    <td>質問内容</td>-->
+      <!--    <td><%= @question.content %></td>-->
+      <!--  </tr>-->
+      <!--</table>-->
+      <h5>質問者</h6>
+      <div class="question-customer mb-3">
+        <%= @question.customer.name %>
+      </div>
+
+      <h5>質問タイトル</h6>
+      <div class="question-title mb-3">
+        <%= @question.title %>
+      </div>
+
+      <h5>質問内容</h6>
+      <div class="question-body">
+        <%= simple_format(@question.content) %>
+      </div>
+
+      <h5>ジャンル</h5>
+      <div class="question-genre">
+        <%= @question.genre.name %>
+      </div>
+
+      <hr class="style">
+
+      <div>
+        <%= form_with model: @answer, url: public_question_answers_path(@question) do |f| %>
+          <div class="form-group">
+            <%= f.text_area :body, rows: '5', placeholder: "回答をここに入力", class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.submit "送信する", class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+      </div>
+
+    　<% if true %>
+        <div>
+          <% @question.answers.order(created_at: :desc).each do |answer| %>
+            <%= answer.customer.name %>
+            <small><%= answer.created_at.in_time_zone('Asia/Tokyo').strftime('%Y/%m/%d %H:%M') %></small>
+            <%= simple_format(answer.body) %>
+          <% end %>
+        </div>
+      <% end %>
+
+
+      <span><%#= link_to '回答する', edit_public_customer_path(@customer.id) %></span>
+  <!--  </div>-->
+  <!--</div>-->
+</div>

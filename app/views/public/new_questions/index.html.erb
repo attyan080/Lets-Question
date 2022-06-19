@@ -1,0 +1,14 @@
+<div class="container">
+  <h2 class="underline-blue">新着質問</h2>
+  <% @questions.each do |question| %>
+    <div class="row py-2">
+      <div class="col-md-4">
+        <%= question.created_at.in_time_zone('Asia/Tokyo').strftime('%Y/%m/%d %H:%M') %>
+      </div>
+      <div class="col-md-8">
+        <%= link_to question.title, public_question_path(question) %>
+      </div>
+    </div>
+  <% end %>
+  <%= paginate @questions %>
+</div>
