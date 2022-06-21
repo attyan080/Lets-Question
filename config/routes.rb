@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   # devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   # sessions: "admin/sessions"
   # }
-
   devise_for :customers, :controllers => {
     :registrations => 'customers/registrations'
    }
@@ -13,8 +12,6 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   #home
   get "home/about" => 'homes#about'
-
-
   namespace :admin do
     #ジャンル
     resources :genres
@@ -22,7 +19,6 @@ Rails.application.routes.draw do
   end
 
   namespace :public do
-
     #会員
     get "customers/:id/quit" => 'customers#quit'
     patch "customers/:id/quit" => 'customers#withdraw'
@@ -38,7 +34,6 @@ Rails.application.routes.draw do
     #ジャンル
     resources :genres, omly: [:index,:show]
     #検索
-    get "search" => "searches#search"
   end
 
 end
