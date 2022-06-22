@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'new_questions/index'
-  end
   # devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   # sessions: "admin/sessions"
   # }
@@ -15,7 +12,6 @@ Rails.application.routes.draw do
   namespace :admin do
     #ジャンル
     resources :genres
-    post 'genres/index' => 'genres#index'
   end
 
   namespace :public do
